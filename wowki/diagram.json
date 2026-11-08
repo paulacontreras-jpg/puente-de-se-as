@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "author": "Puente de Senas",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": -160, "left": 120, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-buzzer", "id": "bz", "top": -70, "left": -160, "attrs": { "volume": "0.1" } },
+    { "type": "wokwi-led", "id": "led1", "top": -90, "left": -240, "attrs": { "color": "green" } },
+    { "type": "wokwi-pushbutton", "id": "btnSi", "top": 220, "left": -120, "attrs": { "color": "green" } },
+    { "type": "wokwi-pushbutton", "id": "btnNo", "top": 220, "left": -40, "attrs": { "color": "red" } },
+    { "type": "wokwi-pushbutton", "id": "btnAyuda", "top": 220, "left": 40, "attrs": { "color": "yellow" } }
+  ],
+  "connections": [
+    ["lcd:GND", "esp:GND.1", "black", []],
+    ["lcd:VCC", "esp:5V", "red", []],
+    ["lcd:SDA", "esp:21", "green", []],
+    ["lcd:SCL", "esp:22", "purple", []],
+    ["bz:1", "esp:GND.1", "black", []],
+    ["bz:2", "esp:18", "orange", []],
+    ["led1:C", "esp:GND.1", "black", []],
+    ["led1:A", "esp:2", "green", []],
+    ["btnSi:1.l", "esp:25", "green", []],
+    ["btnSi:2.l", "esp:GND.1", "black", []],
+    ["btnNo:1.l", "esp:26", "red", []],
+    ["btnNo:2.l", "esp:GND.1", "black", []],
+    ["btnAyuda:1.l", "esp:27", "yellow", []],
+    ["btnAyuda:2.l", "esp:GND.1", "black", []]
+  ],
+  "dependencies": {}
+}
