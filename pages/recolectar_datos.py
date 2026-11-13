@@ -34,7 +34,7 @@ foto = st.camera_input("Haz la seña", key=f"cam_{st.session_state.cam_n}")
 
 if foto is not None:
     caracteristicas, anotada = detectar(Image.open(foto), detector)
-    st.image(anotada, caption="Lo que ve el detector", use_container_width=True)
+        st.image(anotada, caption="Lo que ve el detector", output_format="PNG", use_container_width=True)
 
     if caracteristicas is None:
         st.warning("No se detectó la mano. Acércate, usa más luz y vuelve a tomar la foto.")
