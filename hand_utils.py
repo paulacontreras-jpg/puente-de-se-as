@@ -1,6 +1,7 @@
 import mediapipe as mp
 import numpy as np
 import streamlit as st
+from PIL import Image
 
 mp_hands = mp.solutions.hands
 mp_draw = mp.solutions.drawing_utils
@@ -34,7 +35,7 @@ def detectar(imagen_pil, detector):
     rgb = np.array(imagen_pil.convert("RGB"))
     resultado = detector.process(rgb)
     if not resultado.multi_hand_landmarks:
-        return None, rgb
+        return None, Image.fromarray(rgb)
 
     marcas = resultado.multi_hand_landmarks[0]
     mano = resultado.multi_handedness[0].classification[0].label
@@ -43,4 +44,4 @@ def detectar(imagen_pil, detector):
     mp_draw.draw_landmarks(anotada, marcas, mp_hands.HAND_CONNECTIONS)
 
     puntos = np.array([[p.x, p.y, p.z] for p in marcas.landmark])
-    return normalizar(puntos, mano), anotada
+    return normalizar(puntos, mano), Image.fromarray(anotada)
